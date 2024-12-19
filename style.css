@@ -5,6 +5,7 @@ body {
     line-height: 1.6;
 }
 
+/* Header */
 header {
     background: #333;
     color: #fff;
@@ -14,26 +15,57 @@ header {
 header ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 header ul li {
     display: inline;
-    margin: 0 15px;
 }
 
 header ul li a {
     color: #fff;
     text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s;
 }
 
-main {
+header ul li a:hover {
+    background: #575757;
+    border-radius: 5px;
+}
+
+/* Sections */
+section {
     padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
 }
 
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Footer */
 footer {
     background: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
 }
