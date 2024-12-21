@@ -1,8 +1,22 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Times New Roman, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+}
+
+h1 {
+    font-size: 2rem; /* Adjust as needed */
+    text-align: center; /* Center align the entire heading */
+    line-height: 1.4; /* Add spacing between lines */
+}
+
+h1 span {
+    display: block; /* Make "Jahongash TV" appear on its own line */
+    font-size: 2.5rem; /* Make it slightly larger for emphasis */
+    font-weight: bold; /* Emphasize the second line */
+    color: #333; /* Change the color as desired */
+    margin-top: 10px; /* Add spacing above the second line */
 }
 
 /* Header */
@@ -18,6 +32,7 @@ header ul {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 header ul li {
@@ -29,31 +44,12 @@ header ul li a {
     text-decoration: none;
     padding: 5px 10px;
     transition: background 0.3s;
+    display: inline-block; /* Ensures proper spacing for hover effect */
 }
 
 header ul li a:hover {
     background: #575757;
     border-radius: 5px;
-}
-
-/* Sections */
-section {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #f9f9f9;
-}
-
-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-}
-
-section p {
-    font-size: 1rem;
-    color: #333;
 }
 
 /* Footer */
@@ -63,33 +59,29 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
+    font-size: 0.9rem; /* Adjust font size for readability */
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
+footer p {
+    margin: 0; /* Remove default margin for the paragraph */
+    line-height: 1.4; /* Adjust line height for better spacing */
 }
 
+footer p span {
+    font-weight: bold; /* Make the site name and year bold */
+    color: #f0db4f; /* Optional: Highlight copyright with a different color */
+}
+
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        font-size: 16px;
-        padding: 10px;
+    .sections-container {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 10px; /* Reduce spacing on smaller screens */
     }
 
-    .container {
-        width: 100%;
-        padding: 5px;
-    }
-
-    .nav {
-        font-size: 14px;
-    }
-    img {
+    section {
+        flex: 1 1 100%; /* Sections take full width */
         max-width: 100%;
-        height: auto;
-    }
-
-    nav {
-        display: block;
     }
 }
