@@ -69,3 +69,13 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+@media (max-width: 768px) {
+    /* Style for smaller screens like phones */
+    body {
+        font-size: 16px;
+    }
+    .container {
+        padding: 10px;
+    }
+}
