@@ -81,6 +81,9 @@ html {
         padding: 5px;
     }
 
+    .nav {
+        font-size: 14px;
+    }
     img {
         max-width: 100%;
         height: auto;
