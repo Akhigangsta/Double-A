@@ -1,80 +1,96 @@
 body {
-    font-family: Times New Roman, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
 h1 {
-    font-size: 2rem; /* Adjust as needed */
-    text-align: center; /* Center align the entire heading */
-    line-height: 1.4; /* Add spacing between lines */
+    text-align: center;
+    margin: 20px 0;
 }
 
 h1 span {
-    display: block; /* Make "Jahongash TV" appear on its own line */
-    font-size: 2.5rem; /* Make it slightly larger for emphasis */
-    font-weight: bold; /* Emphasize the second line */
-    color: #333; /* Change the color as desired */
-    margin-top: 10px; /* Add spacing above the second line */
+    color: #007bff;
 }
 
-/* Header */
 header {
-    background: #333;
+    background-color: #333;
     color: #fff;
     padding: 10px 0;
 }
 
 header ul {
-    list-style: none;
-    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 header ul li {
-    display: inline;
+    margin: 0 10px;
 }
 
 header ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 5px 10px;
-    transition: background 0.3s;
-    display: inline-block; /* Ensures proper spacing for hover effect */
 }
 
-header ul li a:hover {
-    background: #575757;
-    border-radius: 5px;
-}
-
-/* Footer */
 footer {
-    background: #333;
-    color: #fff;
     text-align: center;
     padding: 10px 0;
-    margin-top: 20px;
-    font-size: 0.9rem; /* Adjust font size for readability */
+    background-color: #333;
+    color: #fff;
 }
 
-footer p {
-    margin: 0; /* Remove default margin for the paragraph */
-    line-height: 1.4; /* Adjust line height for better spacing */
+footer ul li a {
+    color: #ffffff
 }
 
-footer p span {
-    font-weight: bold; /* Make the site name and year bold */
-    color: #f0db4f; /* Optional: Highlight copyright with a different color */
+/* Post Section */
+#posts-container {
+    max-width: 800px;
+    margin: 20px auto;
 }
 
+.post {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Full Post */
+#full-post {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #ffffff5d;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
     .sections-container {
         flex-direction: column; /* Stack sections vertically */
         gap: 10px; /* Reduce spacing on smaller screens */
@@ -86,53 +102,11 @@ footer p span {
     }
 }
 
-.add-post {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.add-post:hover {
-    background: #0056b3;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal.hidden {
-    display: none;
-}
-
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content input,
-.modal-content textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+p {
+    font-family: "Times New Roman", serif; /* Font style */
+    font-size: 18px;                      /* Font size */
+    line-height: 1.8;                     /* Line height for better readability */
+    text-align: justify;                  /* Justify text for aligned edges */
+    text-indent: 30px;                    /* Indent the first line by 30px */
+    margin: 15px 0;                       /* Space between paragraphs */
 }
