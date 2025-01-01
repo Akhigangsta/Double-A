@@ -5,90 +5,57 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Load posts from localStorage or initialize an empty array
-    let posts = JSON.parse(localStorage.getItem("posts")) || [];
-
     const postsContainer = document.getElementById("posts-container");
-    const modal = document.getElementById("edit-modal");
-    const postTitleInput = document.getElementById("post-title");
-    const postContentInput = document.getElementById("post-content");
-    const postSourceInput = document.getElementById("post-source");
-    const postDateInput = document.getElementById("post-date");
-    const savePostButton = document.getElementById("save-post");
-    const cancelEditButton = document.getElementById("cancel-edit");
-    let editingIndex = null;
+    const postTitle = document.getElementById("post-title");
+    const postContent = document.getElementById("post-content");
+    const latestPostsSection = document.getElementById("latest-posts");
+    const fullPostSection = document.getElementById("full-post");
+    const backButton = document.getElementById("back-button");
 
-    const renderPosts = () => {
-        const currentDate = new Date();
-        postsContainer.innerHTML = "";
-
-        // Filter and sort posts based on date and limit to the latest 3
-        const recentPosts = posts
-            .filter((post) => {
-                const postDate = new Date(post.date);
-                const daysDifference = (currentDate - postDate) / (1000 * 60 * 60 * 24);
-                return daysDifference <= 3;
+    // Fetch and display posts
+    function loadPosts() {
+        fetch("posts.json")
+            .then((response) => response.json())
+            .then((posts) => {
+                postsContainer.innerHTML = ""; // Clear previous content
+                posts.forEach((post) => {
+                    const postElement = document.createElement("article");
+                    postElement.className = "post";
+                    postElement.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <p>${post.summary}</p>
+                        <button onclick="viewPost(${post.id})">Read More</button>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
             })
-            .slice(-3);
+            .catch((error) => console.error("Error loading posts:", error));
+    }
 
-        recentPosts.forEach((post, index) => {
-            const postElement = document.createElement("div");
-            postElement.classList.add("post");
-            postElement.innerHTML = `
-                <h2>${post.title}</h2>
-                <p>${post.content}</p>
-                <div class="meta">Published on: ${post.date}</div>
-                <p class="source">${post.source}</p>
-                <button class="edit-post" data-index="${index}">Edit</button>
-            `;
-            postsContainer.appendChild(postElement);
-        });
-
-        // Attach event listeners for "Edit" buttons
-        document.querySelectorAll(".edit-post").forEach((button) => {
-            button.addEventListener("click", (e) => {
-                editingIndex = e.target.dataset.index;
-                const post = posts[editingIndex];
-                postTitleInput.value = post.title;
-                postContentInput.value = post.content;
-                postSourceInput.value = post.source;
-                postDateInput.value = post.date;
-                modal.classList.remove("hidden");
-            });
-        });
+    // View individual post
+    window.viewPost = function (postId) {
+        fetch("posts.json")
+            .then((response) => response.json())
+            .then((posts) => {
+                const post = posts.find((p) => p.id === postId);
+                if (post) {
+                    postTitle.textContent = post.title;
+                    postContent.innerHTML = post.content
+                        .map((para) => `<p>${para}</p>`)
+                        .join("");
+                    latestPostsSection.classList.add("hidden");
+                    fullPostSection.classList.remove("hidden");
+                }
+            })
+            .catch((error) => console.error("Error fetching post:", error));
     };
 
-    const savePost = () => {
-        const newPost = {
-            title: postTitleInput.value,
-            content: postContentInput.value,
-            source: postSourceInput.value,
-            date: postDateInput.value,
-        };
-
-        if (editingIndex !== null) {
-            posts[editingIndex] = newPost; // Update existing post
-            editingIndex = null;
-        } else {
-            posts.push(newPost); // Add new post
-        }
-
-        localStorage.setItem("posts", JSON.stringify(posts)); // Save to localStorage
-        modal.classList.add("hidden");
-        renderPosts();
-    };
-
-    document.getElementById("add-post").addEventListener("click", () => {
-        editingIndex = null;
-        postTitleInput.value = "";
-        postContentInput.value = "";
-        postSourceInput.value = "";
-        postDateInput.value = new Date().toISOString().split("T")[0];
-        modal.classList.remove("hidden");
+    // Back to latest posts
+    backButton.addEventListener("click", () => {
+        fullPostSection.classList.add("hidden");
+        latestPostsSection.classList.remove("hidden");
     });
 
-    savePostButton.addEventListener("click", savePost);
-    cancelEditButton.addEventListener("click", () => modal.classList.add("hidden"));
-
-    renderPosts();
+    // Initialize
+    loadPosts();
 });
