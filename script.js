@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const greeting = document.createElement('p');
-    greeting.textContent = "Hello! Thanks for visiting our website.";
-    document.querySelector('main').appendChild(greeting);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
     const postsContainer = document.getElementById("posts-container");
     const postTitle = document.getElementById("post-title");
     const postContent = document.getElementById("post-content");
