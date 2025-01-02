@@ -110,3 +110,11 @@ p {
     text-indent: 30px;                    /* Indent the first line by 30px */
     margin: 15px 0;                       /* Space between paragraphs */
 }
+
+img {
+    display: block; /* Makes the image behave as a block element */
+    margin: 10px auto; /* Centers the image horizontally */
+    max-width: 100%; /* Ensures the image doesn't overflow its container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 8px; /* Optional, for rounded corners */
+}
