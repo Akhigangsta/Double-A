@@ -118,3 +118,12 @@ img {
     height: auto; /* Maintains aspect ratio */
     border-radius: 8px; /* Optional, for rounded corners */
 }
+
+#search-results div {
+    color:#333;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
