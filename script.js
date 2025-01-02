@@ -95,7 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                         postContent.appendChild(sourceList);
                     }
-    
+
+                    searchResults.innerHTML = ''; // Clear search results
                     // Show the full post and hide the latest posts
                     latestPostsSection.style.display = 'none';
                     fullPostSection.style.display = 'block';
