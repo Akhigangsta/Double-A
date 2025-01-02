@@ -14,7 +14,7 @@
             },
             {
                 "type": "image",
-                "value": "images/borders-of-uzbekistan.jpg",
+                "src": "images/borders-of-uzbekistan.jpg",
                 "alt": "Borders of Uzbekistan"
             },
             {
@@ -27,7 +27,7 @@
             },
             {
                 "type": "image",
-                "value": "images/region-map-of-uzbekistan.jpg",
+                "src": "images/region-map-of-uzbekistan.jpg",
                 "alt": "Uzbekistan Regions"
             },
             {
