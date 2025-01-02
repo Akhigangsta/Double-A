@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             postContent.appendChild(paraElement);
                         } else if (item.type === "image") {
                             const imageElement = document.createElement('img');
-                            imageElement.src = item.value;
+                            imageElement.value = item.value;
                             imageElement.alt = item.alt || 'Post Image';
                             imageElement.style.maxWidth = '50%';
                             imageElement.style.height = 'auto';
