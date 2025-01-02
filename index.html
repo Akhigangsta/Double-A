@@ -11,10 +11,11 @@
     <header>
         <h1>Welcome to Jahonkash</h1>
         <nav>
-            <ul>
+           <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="geography.html">Geography & Travel</a></li>
+                <li><a href="#" onclick="filterPostsByCategory('Geography')">Geography & Travel</a></li>
+                <li><a href="#" onclick="filterPostsByCategory('History')">History</a></li>
+                <li><a href="#" onclick="filterPostsByCategory('Technology')">Technology</a></li>
             </ul>
         </nav>
     </header>
@@ -22,13 +23,12 @@
     <!-- Main Content -->
     <main>
         <section id="latest-posts">
-            <h2>Latest Posts</h2>
             <div id="posts-container"></div>
         </section>
         <section id="full-post" class="hidden">
             <h2 id="post-title"></h2>
             <div id="post-content"></div>
-            <button id="back-button">Back to Homepage</button>
+            <button id="back-button">Back</button>
         </section>
     </main>
 
