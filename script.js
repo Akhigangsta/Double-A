@@ -5,10 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const latestPostsSection = document.getElementById("latest-posts");
     const fullPostSection = document.getElementById("full-post");
     const backButton = document.getElementById("back-button");
+    const searchInput = document.getElementById("search-input"); // Search input field
+    const searchButton = document.getElementById("search-button"); // Search button
+    const searchResults = document.getElementById("search-results"); // Search results container
 
     // Function to show the latest posts section
     function showLatestPosts() {
         fullPostSection.style.display = 'none'; // Hide the full post section
+        searchResults.innerHTML = ''; // Clear search results
         latestPostsSection.style.display = 'block'; // Show the latest posts section
     }
 
@@ -124,6 +128,59 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => console.error('Error filtering posts:', error));
     }
+
+    // Function to search posts by keyword
+    function normalizeText(text) {
+        return text
+            .toLowerCase()
+            .replace(/'/g, "’") // Replace straight apostrophes with curly ones
+            .replace(/’/g, "'"); // Replace curly apostrophes with straight ones
+    }
+    
+    function searchPosts(keyword) {
+        fetch('posts.json')
+            .then(response => response.json())
+            .then(posts => {
+                const normalizedKeyword = normalizeText(keyword); // Normalize the keyword
+                const matchingPosts = posts.filter(post =>
+                    normalizeText(post.title).includes(normalizedKeyword) // Normalize titles for comparison
+                );
+                searchResults.innerHTML = '';
+    
+                if (matchingPosts.length === 0) {
+                    searchResults.innerHTML = '<p>No results found.</p>';
+                    return;
+                }
+    
+                matchingPosts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <p>${post.summary}</p>
+                        <button onclick="viewPost(${post.id})">Read More</button>
+                    `;
+                    postElement.style.backgroundColor = 'white';
+                    postElement.style.padding = '10px';
+                    postElement.style.marginBottom = '10px';
+                    postElement.style.borderRadius = '5px';
+                    searchResults.appendChild(postElement);
+                });
+    
+                fullPostSection.style.display = 'none';
+                latestPostsSection.style.display = 'none';
+            })
+            .catch(error => console.error('Error searching posts:', error));
+    }
+
+    // Event listener for the search button
+    searchButton.addEventListener("click", () => {
+        const keyword = searchInput.value.trim();
+        if (!keyword) {
+            searchResults.innerHTML = '<p>Please enter a keyword to search.</p>';
+            return;
+        }
+        searchPosts(keyword);
+    });
 
     // Add functions to the global window object so they are accessible in onclick
     window.viewPost = viewPost;
