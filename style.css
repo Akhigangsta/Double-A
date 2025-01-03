@@ -149,6 +149,8 @@ img {
 }
 
 a {
-    word-break: break-word; /* Break long words or URLs */
-    overflow-wrap: anywhere; /* Allow breaks anywhere if necessary */
+    display: inline-block;
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    overflow: hidden; /* Hide overflowed content */
+    max-width: 100%; /* Ensure it doesn’t exceed its container */
 }
