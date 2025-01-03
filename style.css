@@ -88,17 +88,37 @@ button:hover {
     display: none;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-
+/* Responsive Design for Tablets and Small Screens */
+@media (max-width: 1024px) {
     .sections-container {
         flex-direction: column; /* Stack sections vertically */
-        gap: 10px; /* Reduce spacing on smaller screens */
+        gap: 15px; /* Adjust spacing for medium screens */
     }
 
     section {
         flex: 1 1 100%; /* Sections take full width */
-        max-width: 100%;
+        max-width: 100%; /* Ensure no overflow */
+    }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    .sections-container {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 10px; /* Further reduce spacing for smaller screens */
+    }
+
+    section {
+        flex: 1 1 100%; /* Sections take full width */
+        max-width: 100%; /* Ensure no overflow */
+        padding: 10px; /* Add padding for better appearance */
+    }
+}
+
+/* Additional Tweaks for Very Small Screens */
+@media (max-width: 480px) {
+    section {
+        padding: 5px; /* Minimize padding for very small screens */
     }
 }
 
