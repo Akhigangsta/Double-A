@@ -147,3 +147,13 @@ img {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+a {
+    word-break: break-word; /* Break long words or URLs */
+    overflow-wrap: anywhere; /* Allow breaks anywhere if necessary */
+    display: inline-block;
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflowed content */
+    max-width: 100%; /* Ensure it doesn’t exceed its container */
+}
